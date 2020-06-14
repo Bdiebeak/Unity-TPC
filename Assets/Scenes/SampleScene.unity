@@ -652,7 +652,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66914922}
-  m_LocalRotation: {x: -0.1255131, y: -0.000000025939174, z: -0.00000023412663, w: -0.992092}
+  m_LocalRotation: {x: -0.12551308, y: 0.00000003664738, z: -0.0000002420447, w: -0.992092}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2095,7 +2095,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471207571}
-  m_LocalRotation: {x: 0.12551309, y: 0.0000000013393684, z: 0.0000000126405455, w: 0.992092}
+  m_LocalRotation: {x: 0.12551308, y: -0.000000007770452, z: 0.000000013793068, w: 0.992092}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4348,8 +4348,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898452625}
-  m_LocalRotation: {x: 0.1255131, y: 0.000000025939167, z: 0.00000023412662, w: 0.99209195}
-  m_LocalPosition: {x: 0.29999986, y: 2.8569589, z: -4.285863}
+  m_LocalRotation: {x: 0.12551309, y: -0.000000036647386, z: 0.00000024204473, w: 0.992092}
+  m_LocalPosition: {x: 0.29999995, y: 2.8569589, z: -4.285863}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1584934452}
@@ -7043,8 +7043,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418335813}
-  m_LocalRotation: {x: -0.11687427, y: 0.000000051378137, z: -0.00000044852032, w: 0.9931468}
-  m_LocalPosition: {x: 0, y: -0.85255694, z: -0.0035390854}
+  m_LocalRotation: {x: 0.0032250031, y: -0.0000000848534, z: -0.00000045118, w: 0.9999949}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 252750021}
@@ -9276,7 +9276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.033018887, b: 0.033018887, a: 0.36078432}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
