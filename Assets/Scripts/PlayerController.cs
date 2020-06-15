@@ -94,8 +94,8 @@ public class PlayerController : MonoBehaviour
     {
         RotatePlayerToCrosshair();
 
-        playerAnimator.SetFloat("horizontal", runDirection.x);
-        playerAnimator.SetFloat("vertical", runDirection.y);
+        playerAnimator.SetFloat("moveHorizontal", runDirection.x);
+        playerAnimator.SetFloat("moveVertical", runDirection.y);
     }
 
     /// <summary>
