@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isRunning = false;
     private bool isAiming = false;
+    private bool handsAreRaised = false;
     private float currentTimeForRisingHands;
     private float currentArmsWeight;
     private Vector2 runDirection;
@@ -126,6 +127,8 @@ public class PlayerController : MonoBehaviour
         if (isAiming)
         {
             // Плавное поднятие рук
+            handsAreRaised = true;
+
             if (currentTimeForRisingHands < timeForRaisingHands)
             {
                 currentTimeForRisingHands += Time.deltaTime;
@@ -133,6 +136,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                currentTimeForRisingHands = timeForRaisingHands;
                 currentArmsWeight = armsWeight;
             }
 
@@ -144,7 +148,29 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            currentTimeForRisingHands = 0f;
+            // Плавное опускание рук
+            if (!handsAreRaised)
+            {
+                return;
+            }
+
+            if (currentTimeForRisingHands > 0)
+            {
+                currentTimeForRisingHands -= Time.deltaTime;
+                currentArmsWeight = Mathf.Lerp(0, armsWeight, currentTimeForRisingHands / timeForRaisingHands);
+            }
+            else
+            {
+                currentTimeForRisingHands = 0;
+                currentArmsWeight = 0;
+                handsAreRaised = false;
+            }
+
+            playerAnimator.SetIKPositionWeight(AvatarIKGoal.RightHand, currentArmsWeight);
+            playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, currentArmsWeight);
+
+            playerAnimator.SetIKPosition(AvatarIKGoal.RightHand, rightArmAimPosition);
+            playerAnimator.SetIKPosition(AvatarIKGoal.LeftHand, leftArmAimPosition);
         }
     }
 
