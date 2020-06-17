@@ -18,15 +18,17 @@ public class PlayerController : MonoBehaviour
     public float armsWeight = 1f;
     public float xOffsetLeftArm = -100f;
     public float xOffsetRightArm = 100f;
+    public float timeForRaisingHands = 0.5f;
     public Transform rightWrist = null;
     public Transform leftWrist = null;
-    public float timeForRaisingHands = 0.5f;
 
     private bool isRunning = false;
     private bool isAiming = false;
     private bool handsAreRaised = false;
+
     private float currentTimeForRisingHands;
     private float currentArmsWeight;
+
     private Vector2 runDirection;
     private Vector3 crosshairPosition;
     private Vector3 crosshairWorldPositionWithOffsets;
