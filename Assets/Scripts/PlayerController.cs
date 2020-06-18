@@ -7,10 +7,7 @@ public class PlayerController : MonoBehaviour
     [Header("Параметры для поворота игрока к прицелу")]
     public float rotationStep = 15f;
 
-    [Header("Параметры для поворота головы к прицелу")]
-    public float xOffsetHead = 0f;
-    public float yOffsetHead = 0f;
-    [Tooltip("Так же использует для рук при прицеливании")]
+    [Header("Параметры для поворота головы и рук к прицелу")]
     public float zOffsetHeadArms = 250f;
 
     [Header("Параметры для поднятия рук при прицеливании")]
@@ -21,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public float timeForRaisingHands = 0.5f;
     public Transform rightWrist = null;
     public Transform leftWrist = null;
+
+    public Shooting shooting;
 
     private bool isRunning = false;
     private bool isAiming = false;
@@ -61,15 +60,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         #region Обработка ввода игрока
-        if (Input.GetMouseButtonDown(1))
-        {
-            isAiming = true;
-        }
-
-        if (Input.GetMouseButtonUp(1))
-        {
-            isAiming = false;
-        }
 
         runDirection.x = Input.GetAxisRaw("Horizontal");
         runDirection.y = Input.GetAxisRaw("Vertical");
@@ -79,8 +69,8 @@ public class PlayerController : MonoBehaviour
 
         // Координаты прицела + смещения из инспектора
         crosshairPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
-        crosshairWorldPositionWithOffsets = mainCamera.ScreenToWorldPoint(new Vector3(crosshairPosition.x + xOffsetHead,
-                                                                                      crosshairPosition.y + yOffsetHead,
+        crosshairWorldPositionWithOffsets = mainCamera.ScreenToWorldPoint(new Vector3(crosshairPosition.x,
+                                                                                      crosshairPosition.y,
                                                                                       zOffsetHeadArms));
 
         leftArmAimPosition = mainCamera.ScreenToWorldPoint(new Vector3(crosshairPosition.x + xOffsetLeftArm,
@@ -89,6 +79,28 @@ public class PlayerController : MonoBehaviour
         rightArmAimPosition = mainCamera.ScreenToWorldPoint(new Vector3(crosshairPosition.x + xOffsetRightArm,
                                                                         crosshairPosition.y, zOffsetHeadArms));
 
+        // Прицеливание
+        if (Input.GetMouseButtonDown(1))
+        {
+            isAiming = true;
+        }
+
+        if (Input.GetMouseButtonUp(1) && !Input.GetMouseButton(0))
+        {
+            isAiming = false;
+        }
+
+        // Стрельба
+        if (Input.GetMouseButton(0))
+        {
+            isAiming = true;
+            shooting.Shoot(crosshairWorldPositionWithOffsets);
+        }
+
+        if (Input.GetMouseButtonUp(0) && !Input.GetMouseButton(1))
+        {
+            isAiming = false;
+        }
         #endregion
     }
 
