@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
@@ -31,8 +32,13 @@ public class PlayerController : MonoBehaviour
     public LayerMask checkingLayers;
     public float checkDistance = 1f;
     public float delayBeforeCheck = 1f;
+
+    [Header("Параметры для замедления времени при прыжке")]
     [Range(0, 1)]
     public float slowedTime;
+    public PostProcessVolume mainPPVolume = null;
+    public PostProcessProfile mainPPProfile = null;
+    public PostProcessProfile slowtimePPProfile = null;
 
     [Header("Параметры для стрельбы")]
     public Shooting shooting;
@@ -329,6 +335,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void SlowDownTime()
     {
+        mainPPVolume.profile = slowtimePPProfile;
         Time.timeScale = slowedTime;
     }
 
@@ -337,6 +344,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void NormalizeTime()
     {
+        mainPPVolume.profile = mainPPProfile;
         Time.timeScale = 1f;
     }
 
