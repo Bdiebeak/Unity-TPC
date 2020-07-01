@@ -6,6 +6,7 @@ public class Shooting : MonoBehaviour
 {
     public float range = 100f;
     public float shootingDelay = 10f;
+
     public ParticleSystem[] shootParticles;
     public ParticleSystem bulletCollisionParticles;
     public LayerMask layerMask;
@@ -28,16 +29,16 @@ public class Shooting : MonoBehaviour
         {
             currentTimeDelay = Time.time + 1 / shootingDelay;
 
+            foreach (var particle in shootParticles)
+            {
+                particle.Play();
+            }
+
             Vector3 direction = (targetPosition - mainCameraTransform.position).normalized;
 
             RaycastHit hit;
             if (Physics.Raycast(mainCameraTransform.position, direction, out hit, range, layerMask))
             {
-                foreach (var particle in shootParticles)
-                {
-                    particle.Play();
-                }
-
                 bulletCollisionParticles.transform.position = hit.point;
                 bulletCollisionParticles.transform.LookAt(mainCameraTransform);
 
