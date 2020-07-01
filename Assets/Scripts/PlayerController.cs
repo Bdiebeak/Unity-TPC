@@ -171,7 +171,10 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetFloat("moveHorizontal", runDirection.x);
             playerAnimator.SetFloat("moveVertical", runDirection.z);
 
-            playerRigidbody.velocity = playerTransform.TransformDirection(runDirection) * moveSpeed;
+            Vector3 runVector = playerTransform.TransformDirection(runDirection) * moveSpeed;
+            runVector.y = playerRigidbody.velocity.y;
+
+            playerRigidbody.velocity = runVector;
         }
     }
 
