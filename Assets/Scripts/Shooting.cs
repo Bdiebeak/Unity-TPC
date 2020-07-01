@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    public bool canShoot = true;
+
     public float range = 100f;
     public float shootingDelay = 10f;
 
@@ -25,6 +27,8 @@ public class Shooting : MonoBehaviour
     /// <param name="targetPosition"> Конечная точка стрельбы </param>
     public void Shoot(Vector3 targetPosition)
     {
+        if (!canShoot) return;
+
         if (Time.time >= currentTimeDelay)
         {
             currentTimeDelay = Time.time + 1 / shootingDelay;
