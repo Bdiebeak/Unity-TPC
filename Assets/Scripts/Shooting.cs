@@ -1,52 +1,52 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Shooting : MonoBehaviour
+namespace Bdiebeak.TPC.Shooting
 {
-    public bool canShoot = true;
-
-    public float range = 100f;
-    public float shootingDelay = 10f;
-
-    public ParticleSystem[] shootParticles;
-    public ParticleSystem bulletCollisionParticles;
-    public LayerMask layerMask;
-
-    private Transform mainCameraTransform;
-    private float currentTimeDelay;
-
-    private void Start()
+    public class Shooting : MonoBehaviour
     {
-        mainCameraTransform = Camera.main.transform;
-    }
+        public bool canShoot = true;
 
-    /// <summary>
-    /// Функция, осуществляющая выстрел
-    /// </summary>
-    /// <param name="targetPosition"> Конечная точка стрельбы </param>
-    public void Shoot(Vector3 targetPosition)
-    {
-        if (!canShoot) return;
+        public float range = 100f;
+        public float shootingDelay = 10f;
 
-        if (Time.time >= currentTimeDelay)
+        public ParticleSystem[] shootParticles;
+        public ParticleSystem bulletCollisionParticles; // ToDo: change this collision particles on auto from particle system
+        public LayerMask layerMask;
+
+        private Transform mainCameraTransform;
+        private float currentTimeDelay;
+
+        private void Awake() => InitializeComponents();
+        private void InitializeComponents()
         {
-            currentTimeDelay = Time.time + 1 / shootingDelay;
+            mainCameraTransform = Camera.main.transform;
+        }
 
-            foreach (var particle in shootParticles)
+        /// <summary>
+        /// Функция, осуществляющая выстрел
+        /// </summary>
+        /// <param name="targetPosition"> Конечная точка стрельбы </param>
+        public void Shoot(Vector3 targetPosition)
+        {
+            if (canShoot == false) return;
+
+            if (Time.time >= currentTimeDelay)
             {
-                particle.Play();
-            }
+                currentTimeDelay = Time.time + 1 / shootingDelay;
 
-            Vector3 direction = (targetPosition - mainCameraTransform.position).normalized;
+                foreach (var particle in shootParticles)
+                {
+                    particle.Play();
+                }
 
-            RaycastHit hit;
-            if (Physics.Raycast(mainCameraTransform.position, direction, out hit, range, layerMask))
-            {
-                bulletCollisionParticles.transform.position = hit.point;
-                bulletCollisionParticles.transform.LookAt(mainCameraTransform);
+                var direction = (targetPosition - mainCameraTransform.position).normalized;
+                if (Physics.Raycast(mainCameraTransform.position, direction, out var hit, range, layerMask))
+                {
+                    bulletCollisionParticles.transform.position = hit.point;
+                    bulletCollisionParticles.transform.LookAt(mainCameraTransform);
 
-                bulletCollisionParticles.Play();
+                    bulletCollisionParticles.Play();
+                }
             }
         }
     }
