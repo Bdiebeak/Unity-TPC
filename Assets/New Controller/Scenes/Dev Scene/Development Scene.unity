@@ -11156,8 +11156,9 @@ GameObject:
   - component: {fileID: 1652160389}
   - component: {fileID: 1652160391}
   - component: {fileID: 1652160390}
-  - component: {fileID: 1652160392}
+  - component: {fileID: 1652160394}
   - component: {fileID: 1652160393}
+  - component: {fileID: 1652160392}
   m_Layer: 9
   m_Name: RB Player
   m_TagString: Untagged
@@ -11272,7 +11273,20 @@ MonoBehaviour:
   topClamp: 70
   bottomClamp: -30
   isRotationAllowed: 1
-  mainCamera: {fileID: 651220432}
+--- !u!114 &1652160394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652160387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06370b3feba4deb4889002acd54c0051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldBlockCursor: 1
+  shouldHideCursor: 1
 --- !u!43 &1693022987
 Mesh:
   m_ObjectHideFlags: 0
