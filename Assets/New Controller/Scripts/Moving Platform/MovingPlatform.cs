@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,6 +6,8 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
+    [SerializeField] private float onPointTimeout = 3f;
+    [Space]
     [SerializeField] private bool isMoveAllowed = true;
     [SerializeField] private List<Transform> waypoints = new List<Transform>();
 
@@ -12,6 +15,7 @@ public class MovingPlatform : MonoBehaviour
     
     private Rigidbody _rigidbody;
     private int _destinationIndex = 1;
+    private Coroutine _currentTimeoutCoroutine;
 
     private void Awake()
     {
@@ -67,7 +71,18 @@ public class MovingPlatform : MonoBehaviour
         {
             _rigidbody.position = destinationPosition;
             _destinationIndex = CalculateNextIndex(_destinationIndex);   
+            
+            // Start timeout coroutine
+            if (_currentTimeoutCoroutine != null) StopCoroutine(_currentTimeoutCoroutine);
+            _currentTimeoutCoroutine = StartCoroutine(WaitTimeoutCoroutine());
         }
+    }
+
+    private IEnumerator WaitTimeoutCoroutine()
+    {
+        isMoveAllowed = false;
+        yield return new WaitForSeconds(onPointTimeout);
+        isMoveAllowed = true;
     }
 
     private int FindNearestWaypoint()
