@@ -15,10 +15,10 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public partial class @PCaasd : IInputActionCollection2, IDisposable
+public partial class @PlayerControls : IInputActionCollection2, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @PCaasd()
+    public @PlayerControls()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""Player Controls"",
@@ -41,7 +41,7 @@ public partial class @PCaasd : IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""7f356bea-6b4e-416b-8e1e-4d3dfddc87d5"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
+                    ""processors"": ""InvertVector2(invertX=false)"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
@@ -229,8 +229,8 @@ public partial class @PCaasd : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Sprint;
     public struct PlayerActions
     {
-        private @PCaasd m_Wrapper;
-        public PlayerActions(@PCaasd wrapper) { m_Wrapper = wrapper; }
+        private @PlayerControls m_Wrapper;
+        public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
