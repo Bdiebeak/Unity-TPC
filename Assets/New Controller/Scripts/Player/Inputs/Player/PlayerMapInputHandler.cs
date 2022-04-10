@@ -7,6 +7,7 @@ public class PlayerMapInputHandler : MonoBehaviour, IPlayerInputActions
     public Vector2 MoveValue {get; set;}
     public Vector2 LookValue {get; set;}
     public bool JumpValue {get; set;}
+    public bool SprintValue {get; set;}
 
     private void OnMove(InputValue value)
     {
@@ -22,6 +23,10 @@ public class PlayerMapInputHandler : MonoBehaviour, IPlayerInputActions
     {
         JumpValue = value.isPressed;
     }
-    
-    
+
+    private void OnSprint(InputValue value)
+    {
+        SprintValue = value.isPressed;
+    }
+
 }
