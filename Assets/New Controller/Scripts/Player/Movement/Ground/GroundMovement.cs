@@ -48,7 +48,6 @@ public class GroundMovement : MonoBehaviour
         }
 
         var moveDirection = Vector3.zero;
-        // ToDo: remove dependency from rigidbody rotation and move according to camera.
         moveDirection += playerRigidbody.transform.right * moveInput.x;
         moveDirection += playerRigidbody.transform.forward * moveInput.y;
         moveDirection = moveDirection.normalized;
