@@ -20346,7 +20346,6 @@ GameObject:
   - component: {fileID: 1592716371}
   - component: {fileID: 1592716374}
   - component: {fileID: 1592716373}
-  - component: {fileID: 1592716372}
   m_Layer: 9
   m_Name: Left Eye
   m_TagString: Untagged
@@ -20368,19 +20367,6 @@ Transform:
   m_Father: {fileID: 158533457}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1592716372
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1592716370}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1592716373
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23193,7 +23179,6 @@ GameObject:
   - component: {fileID: 1617438252}
   - component: {fileID: 1617438255}
   - component: {fileID: 1617438254}
-  - component: {fileID: 1617438253}
   m_Layer: 9
   m_Name: Basement
   m_TagString: Untagged
@@ -23215,19 +23200,6 @@ Transform:
   m_Father: {fileID: 158533457}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1617438253
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617438251}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1617438254
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23555,10 +23527,10 @@ MonoBehaviour:
   sprintSpeed: 10
   slopeLimit: 0
   slideSpeed: 0
-  jumpForce: 1.5
+  jumpForce: 10
   shouldMoveAccordingToCamera: 1
-  rotationSpeed: 3
-  minAngle: 5
+  rotationSpeed: 5
+  minAngle: 0
   physics: {fileID: 1652160395}
   playerRigidbody: {fileID: 1652160389}
 --- !u!114 &1652160393
@@ -23608,7 +23580,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   playerCollider: {fileID: 1517899194}
-  rayOffset: 0.1
+  rayOffset: 0.2
   gravity: 20
 --- !u!1 &1697011339
 GameObject:
@@ -23621,7 +23593,6 @@ GameObject:
   - component: {fileID: 1697011340}
   - component: {fileID: 1697011343}
   - component: {fileID: 1697011342}
-  - component: {fileID: 1697011341}
   m_Layer: 9
   m_Name: Right Eye
   m_TagString: Untagged
@@ -23643,19 +23614,6 @@ Transform:
   m_Father: {fileID: 158533457}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1697011341
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697011339}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1697011342
 MeshRenderer:
   m_ObjectHideFlags: 0
