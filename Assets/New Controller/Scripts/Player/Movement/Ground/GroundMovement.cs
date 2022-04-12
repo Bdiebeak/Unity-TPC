@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class GroundMovement : MonoBehaviour
 {
     [Header("Settings")] 
     [SerializeField] private float speed;
@@ -15,14 +15,14 @@ public class Movement : MonoBehaviour
     [SerializeField] private float minAngle;
     
     [Header("Required Components")]
-    [SerializeField] private PlayerPhysics physics;
+    [SerializeField] private GroundPhysics physics;
     [SerializeField] private Rigidbody playerRigidbody;
     [SerializeField] private IPlayerInputActions inputActions;
 
     private void Awake() => InitializeComponents();
     private void InitializeComponents()
     {
-        if (physics == null) physics = GetComponent<PlayerPhysics>();
+        if (physics == null) physics = GetComponent<GroundPhysics>();
         if (playerRigidbody == null) playerRigidbody = GetComponent<Rigidbody>();
         if (inputActions == null) inputActions = GetComponent<IPlayerInputActions>();
     }

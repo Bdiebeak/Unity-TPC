@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerPhysics : MonoBehaviour
+public class GroundPhysics : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private LayerMask groundLayers;
