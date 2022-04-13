@@ -12,19 +12,18 @@ public class GroundMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private bool shouldMoveAccordingToCamera = true;
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private float minAngle;
     
     [Header("Required Components")]
     [SerializeField] private GroundPhysics physics;
     [SerializeField] private Rigidbody playerRigidbody;
-    [SerializeField] private IPlayerInputActions inputActions;
+    [SerializeField] private PlayerInputHandler inputActions;
 
     private void Awake() => InitializeComponents();
     private void InitializeComponents()
     {
         if (physics == null) physics = GetComponent<GroundPhysics>();
         if (playerRigidbody == null) playerRigidbody = GetComponent<Rigidbody>();
-        if (inputActions == null) inputActions = GetComponent<IPlayerInputActions>();
+        if (inputActions == null) inputActions = GetComponent<PlayerInputHandler>();
     }
 
     private void Update()
@@ -39,12 +38,8 @@ public class GroundMovement : MonoBehaviour
             cameraRotation.y = 0;
             playerRotation.y = 0;
 
-            var angle = Vector3.Angle(cameraRotation, playerRotation);
-            if (Mathf.Abs(angle) > minAngle)
-            {
-                var requiredRotation = Quaternion.LookRotation(cameraRotation);
-                playerRigidbody.transform.rotation = Quaternion.RotateTowards(transform.rotation, requiredRotation, rotationSpeed * Time.deltaTime * 100f);
-            }
+            var requiredRotation = Quaternion.LookRotation(cameraRotation);
+            playerRigidbody.transform.rotation = Quaternion.RotateTowards(transform.rotation, requiredRotation, rotationSpeed * Time.deltaTime * 100f);
         }
 
         var moveDirection = Vector3.zero;

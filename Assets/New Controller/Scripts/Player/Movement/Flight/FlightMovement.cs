@@ -12,14 +12,14 @@ public class FlightMovement : MonoBehaviour
     [Header("Required Components")]
     [SerializeField] private FlightPhysics physics;
     [SerializeField] private Rigidbody playerRigidbody;
-    [SerializeField] private IPlayerInputActions inputActions;
+    [SerializeField] private PlayerInputHandler inputActions;
     
     private void Awake() => InitializeComponents();
     private void InitializeComponents()
     {
         if (physics == null) physics = GetComponent<FlightPhysics>();
         if (playerRigidbody == null) playerRigidbody = GetComponent<Rigidbody>();
-        if (inputActions == null) inputActions = GetComponent<IPlayerInputActions>();
+        if (inputActions == null) inputActions = GetComponent<PlayerInputHandler>();
     }
     
     private void Update()
