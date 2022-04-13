@@ -60,7 +60,7 @@ namespace Bdiebeak.TPC
         private Vector3 rightArmAimPosition;
         private Vector3 leftArmAimPosition;
 
-        private Camera mainCamera;
+        private UnityEngine.Camera mainCamera;
         private Animator playerAnimator;
         private Transform playerTransform;
         private Rigidbody playerRigidbody;
@@ -76,7 +76,7 @@ namespace Bdiebeak.TPC
             Cursor.visible = false;
 
             // Инициализация нужных переменных
-            mainCamera = Camera.main;
+            mainCamera = UnityEngine.Camera.main;
             playerAnimator = GetComponent<Animator>();
             playerTransform = transform;
             playerRigidbody = GetComponent<Rigidbody>();

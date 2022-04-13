@@ -19,7 +19,7 @@ namespace Bdiebeak.TPC.Shooting
         private void Awake() => InitializeComponents();
         private void InitializeComponents()
         {
-            mainCameraTransform = Camera.main.transform;
+            mainCameraTransform = UnityEngine.Camera.main.transform;
         }
 
         /// <summary>
