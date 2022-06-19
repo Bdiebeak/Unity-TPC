@@ -23553,13 +23553,13 @@ GameObject:
   - component: {fileID: 1652160389}
   - component: {fileID: 1652160391}
   - component: {fileID: 1652160390}
+  - component: {fileID: 1652160393}
+  - component: {fileID: 1652160398}
   - component: {fileID: 1652160394}
   - component: {fileID: 1652160395}
   - component: {fileID: 1652160392}
   - component: {fileID: 1652160397}
   - component: {fileID: 1652160396}
-  - component: {fileID: 1652160393}
-  - component: {fileID: 1652160398}
   m_Layer: 9
   m_Name: RB Player
   m_TagString: Untagged
@@ -23659,9 +23659,8 @@ MonoBehaviour:
   slopeLimit: 0
   slideSpeed: 0
   jumpForce: 10
-  shouldMoveAccordingToCamera: 0
+  shouldMoveAccordingToCamera: 1
   rotationSpeed: 5
-  minAngle: 0
   physics: {fileID: 1652160395}
   playerRigidbody: {fileID: 1652160389}
   inputActions: {fileID: 0}
@@ -23761,7 +23760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538dc7bf3ff34c7c94cd4b2da23d0df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDistance: 5
+  startDistance: 7
   minDistance: 1
   maxDistance: 10
   sensitivity: 5
